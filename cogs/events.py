@@ -46,7 +46,7 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_edit(self,messagebefore,messageafter):
-        print(f'[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Username: {messagebefore.author}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content Before Edit: {messagebefore.content}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content After Edit: {messageafter.content}')
+        print(f'[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] {messagebefore.author}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content Before Edit: {messagebefore.content}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content After Edit: {messageafter.content}')
         embed = discord.Embed()
         embed.add_field(name="Before:", value=messagebefore.content, inline=False)
         embed.add_field(name="After:", value=messageafter.content, inline=False)
