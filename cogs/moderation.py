@@ -13,7 +13,7 @@ class moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def kick(self,ctx,member : discord.Member,*,reason= "None"):
+    async def kick(self,ctx,member:discord.Member,*,reason= "None"):
         if member == ctx.author:
             embed = discord.Embed(description="You can't kick yourself dumbass.")
             await ctx.send(embed=embed)
@@ -48,7 +48,7 @@ class moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def ban(self,ctx,member : discord.Member,*,reason= "None"):
+    async def ban(self,ctx,member:discord.Member,*,reason= "None"):
         if member == ctx.author:
             embed = discord.Embed(description="You can't ban yourself dumbass.")
             await ctx.send(embed=embed)
@@ -111,7 +111,7 @@ class moderation(commands.Cog):
 
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def mute(self,ctx,member : discord.Member,*,reason= "no reason"):
+    async def mute(self,ctx,member:discord.Member,*,reason= "no reason"):
         role = discord.utils.get(ctx.guild.roles, name="Muted")
         if member == ctx.author:
             embed = discord.Embed(description="you cant mute yourself retard")
