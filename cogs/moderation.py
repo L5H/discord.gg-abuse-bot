@@ -178,7 +178,24 @@ class moderation(commands.Cog):
             embed.set_footer(text=f"Unmute attempted by {ctx.author}")
             await ctx.send(embed=embed)
             return
-
+    
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def slowmode(self,ctx,seconds):
+        await ctx.channel.edit(slowmode_delay=seconds)
+        embed = discord.Embed(description=f"Set channels slowmode to {seconds} seconds.")
+        await ctx.send(embed=embed)
+    @slowmode.error
+    async def slowmode_error(self,ctx,error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            embed = discord.Embed(description="You did not specify how many seconds you wanted to set the slowmode to this channel.")
+            await ctx.send(embed=embed)
+            return
+        if isinstance(error, MissingPermissions):
+            embed = discord.Embed(description="You don't have permission to do this.")
+            await ctx.send(embed=embed)
+            return
+    
     @commands.command(aliases=['clear'])
     @commands.has_permissions(manage_messages=True)
     async def purge(self,ctx,nig: int):
