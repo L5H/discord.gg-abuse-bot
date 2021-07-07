@@ -64,19 +64,23 @@ class moderation(commands.Cog):
             embed = discord.Embed(description="You didn't mention a user to ban.")
             embed.set_footer(text=f"Ban attempted by {ctx.author}")
             await ctx.send(embed=embed)
+            return
         if isinstance(error, commands.MissingPermissions):
             embed = discord.Embed(description="You don't have permission to do this.")
             embed.set_footer(text=f"Ban attempted by {ctx.author}")
             await ctx.send(embed=embed)
+            return
         if isinstance(error, commands.MemberNotFound):
             embed = discord.Embed(description="User was not found.")
             embed.set_footer(text=f"Ban attempted by {ctx.author}")
             await ctx.send(embed=embed)
+            return
         if isinstance(error, commands.CommandInvokeError):
             embed = discord.Embed(description="Could not ban the user. (CommandInvokeError)")
             embed.set_footer(text=f"Ban attempted by {ctx.author}")
             await ctx.send(embed=embed)
-    
+            return
+        
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def unban(self,ctx,*,member):
