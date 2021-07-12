@@ -54,8 +54,8 @@ class usercommands(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command(alias=['av','ava','pfp'])
-    async def avatar(ctx,member:discord.Member):
-        embed = discord.Embed(description=f"{member.mention}'s pfp",color=0x2f3136)
+    async def avatar(self,ctx,member:discord.Member):
+        embed = discord.Embed(description=f"{member}'s avatar.",color=0x2f3136)
         embed.set_image(url=member.avatar_url)
         await ctx.send(embed=embed)
     @avatar.error
