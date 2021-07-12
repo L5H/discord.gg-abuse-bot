@@ -1,4 +1,4 @@
-import discord, requests
+import discord, requests, os
 from discord.ext import commands
 from colorama import Fore, Style, init
 init()
@@ -18,10 +18,30 @@ class ownercommands(commands.Cog):
         await ctx.send(embed=embed)
         print(f'[{Fore.RED}{Style.BRIGHT}x{Fore.RESET}] Shutdown.')
         exit()
+    @shutdown.error
+    async def shutdown_error(self,ctx,error):
+        if isinstance(error,commands.MissingRole):
+            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
+            await ctx.send(embed=embed)
+            return
+
+    @commands.command(alias=['clearterm'])
+    @commands.has_role("Lead Developer (owner)")
+    async def clearterminal(self,ctx):
+        embed = discord.Embed(description="Cleared the terminal.",color=0x2f3136)
+        await ctx.send(embed=embed)
+        os.system('cls||clear')
+        print(f'[{Fore.YELLOW}{Style.BRIGHT}!{Fore.RESET}] Cleared terminal.')
+    @clearterminal.error
+    async def clearterminal_error(self,ctx,error):
+        if isinstance(error,commands.MissingRole):
+            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
+            await ctx.send(embed=embed)
+            return
 
     @commands.command()
     @commands.has_role("Lead Developer (owner)")
-    async def requests(self,ctx,url,output):
+    async def request(self,ctx,url,output):
         if output == 'json' or output == 'JSON':
             responce = requests.get(url).json()
             embed = discord.Embed(title=f"HTTP GET results for {url} using JSON.",description=f"```json\n{responce}\n```",color=0x2f3136)
@@ -36,7 +56,13 @@ class ownercommands(commands.Cog):
             embed.add_field(name="TEXT",value="```h.requests {url} text```\nThis returns text output from the url.",inline=False)
             embed.set_footer(text="Keep in mind this is only HTTP GET requests, POST request command has not been made.")
             await ctx.send(embed=embed)
-
+    @request.error
+    async def request_error(self,ctx,error):
+        if isinstance(error,commands.MissingRole):
+            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
+            await ctx.send(embed=embed)
+            return
+        
     @commands.command(aliases=['hentaiscraper'])
     @commands.has_role("Lead Developer (owner)")
     async def hscrape(self,ctx):
@@ -54,6 +80,12 @@ class ownercommands(commands.Cog):
                             await ctx.send(embed=embed)
             except IndexError:
                 continue
+    @hscrape.error
+    async def hscrape_error(self,ctx,error):
+        if isinstance(error,commands.MissingRole):
+            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
+            await ctx.send(embed=embed)
+            return
 
 def setup(client):
     client.add_cog(ownercommands(client))
