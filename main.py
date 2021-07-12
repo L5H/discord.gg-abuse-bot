@@ -5,7 +5,7 @@ from cogs import moderation, events, apicommands, ownercommands, usercommands, e
 os.system("title hentaihaven.dev bot")
 intents = discord.Intents.default()
 intents.members = True
-client = commands.Bot(command_prefix="h.", intents=intents, case_insensitive=False)
+client = commands.Bot(command_prefix="h.", intents=intents, case_insensitive=True)
 cogs = [errorhandlers, events, moderation, ownercommands, usercommands, apicommands]
 
 for ok in range(len(cogs)):
