@@ -37,23 +37,39 @@ class events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_delete(self,message):
-        print(f'[{Fore.RED}{Style.BRIGHT}-{Fore.RESET}] {message.author}: {message.content}')
-        embed = discord.Embed(description=message.content)
-        embed.set_author(name=message.author, icon_url=message.author.avatar_url)
-        embed.set_footer(text=f"Deleted in: #{message.channel.name}")
-        channel = self.client.get_channel(856212153147981844)
-        await channel.send(embed=embed)
+        try:
+            print(f'[{Fore.RED}{Style.BRIGHT}-{Fore.RESET}] {message.author}: {message.content}')
+            embed = discord.Embed(description=message.content)
+            embed.set_author(name=message.author, icon_url=message.author.avatar_url)
+            embed.set_footer(text=f"Deleted in: #{message.channel.name}")
+            channel = self.client.get_channel(856212153147981844)
+            await channel.send(embed=embed)
+        except discord.errors.HTTPException: # if this is even possible?????
+            print(f'[{Fore.RED}{Style.BRIGHT}!{Fore.RESET}] Deleted message is too long.')
+            embed = discord.Embed(description="Deleted message is too long.")
+            embed.set_author(name=message.author, icon_url=message.author.avatar_url)
+            embed.set_footer(text=f"Deleted in: #{message.channel.name}")
+            channel = self.client.get_channel(856212153147981844)
+            await channel.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_message_edit(self,messagebefore,messageafter):
-        print(f'[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] {messagebefore.author}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content Before Edit: {messagebefore.content}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content After Edit: {messageafter.content}')
-        embed = discord.Embed()
-        embed.add_field(name="Before:", value=messagebefore.content, inline=False)
-        embed.add_field(name="After:", value=messageafter.content, inline=False)
-        embed.set_author(name=messagebefore.author, icon_url=messagebefore.author.avatar_url)
-        embed.set_footer(text=f"Edited in: #{messagebefore.channel.name}")
-        channel = self.client.get_channel(856212153147981844)
-        await channel.send(embed=embed)
+        try:
+            print(f'[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] {messagebefore.author}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content Before Edit: {messagebefore.content}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content After Edit: {messageafter.content}')
+            embed = discord.Embed()
+            embed.add_field(name="Before:", value=messagebefore.content, inline=False)
+            embed.add_field(name="After:", value=messageafter.content, inline=False)
+            embed.set_author(name=messagebefore.author, icon_url=messagebefore.author.avatar_url)
+            embed.set_footer(text=f"Edited in: #{messagebefore.channel.name}")
+            channel = self.client.get_channel(856212153147981844)
+            await channel.send(embed=embed)
+        except discord.errors.HTTPException:
+            print(f'[{Fore.RED}{Style.BRIGHT}!{Fore.RESET}] Edited message is too long.')
+            embed = discord.Embed(description="Edited message is too long.")
+            embed.set_author(name=messagebefore.author, icon_url=messagebefore.author.avatar_url)
+            embed.set_footer(text=f"Edited in: #{messagebefore.channel.name}")
+            channel = self.client.get_channel(856212153147981844)
+            await channel.send(embed=embed)
 
 def setup(client):
     client.add_cog(events(client))
