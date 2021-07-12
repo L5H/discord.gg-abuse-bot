@@ -24,7 +24,7 @@ class events(commands.Cog):
                     pass
                 elif i in message.content.lower():
                     await message.delete()
-                    await message.channel.send(embed=discord.Embed(description="no self promoting lol"),color=0x2f3136)
+                    await message.channel.send(embed=discord.Embed(description="no self promoting lol",color=0x2f3136))
                 else:
                     pass
             except discord.errors.NotFound: # for some reason this gives out errors?
@@ -89,7 +89,7 @@ class events(commands.Cog):
                     pass
                 elif i in messageafter.content.lower():
                     await messageafter.delete()
-                    await messageafter.channel.send(embed=discord.Embed(description="no self promoting lol"),color=0x2f3136)
+                    await messageafter.channel.send(embed=discord.Embed(description="no self promoting lol",color=0x2f3136))
                 else:
                     pass
             except discord.errors.NotFound: # for some reason this gives out errors?
