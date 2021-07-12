@@ -25,7 +25,7 @@ class ownercommands(commands.Cog):
             await ctx.send(embed=embed)
             return
 
-    @commands.command(alias=['clearterm'])
+    @commands.command(aliases=['clearterm'])
     @commands.has_role("Lead Developer (owner)")
     async def clearterminal(self,ctx):
         embed = discord.Embed(description="Cleared the terminal.",color=0x2f3136)
