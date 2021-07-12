@@ -200,7 +200,7 @@ class moderation(commands.Cog):
             await ctx.send(embed=embed)
             return
 
-    @commands.command(alias=['nick','nn'])
+    @commands.command(aliases=['nick','nn'])
     @commands.has_permissions(manage_nicknames=True)
     async def nickname(self,ctx,member:discord.Member,*,arg):
         embed = discord.Embed(description=f"Changed {member.mention}'s nickname to {arg}",color=0x2f3136)
