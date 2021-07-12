@@ -12,9 +12,9 @@ class errorhandlers(commands.Cog):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Error Handlers.')
 
     @commands.Cog.listener()
-    async def on_command_error(self,ctx, error):
+    async def on_command_error(self,ctx,error):
         if isinstance(error, commands.CommandNotFound):
-            embed = discord.Embed(description="Command doesn't exist.")
+            embed = discord.Embed(description="Command doesn't exist.",color=0x2f3136)
             await ctx.send(embed=embed)
 
 def setup(client):
