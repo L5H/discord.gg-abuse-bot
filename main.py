@@ -1,12 +1,11 @@
-import discord, sys
+import discord, os
 from discord.ext import commands
 from cogs import moderation, events, apicommands, ownercommands, usercommands, errorhandlers
 
-sys.stdout.buffer.write(b'\33]0;hentaihaven.dev bot\a')
-sys.stdout.buffer.flush()
+os.system("title hentaihaven.dev bot")
 intents = discord.Intents.default()
 intents.members = True
-client = commands.Bot(command_prefix="h.", intents=intents)
+client = commands.Bot(command_prefix="h.", intents=intents, case_insensitive=False)
 cogs = [errorhandlers, events, moderation, ownercommands, usercommands, apicommands]
 
 for ok in range(len(cogs)):
