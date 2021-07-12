@@ -53,7 +53,7 @@ class usercommands(commands.Cog):
         embed.set_image(url="https://cdn.hentaihaven.dev/onionsiteishot/fbisfatcock/skidnigger/Discord_x50mpifBtW.png")
         await ctx.send(embed=embed)
 
-    @commands.command(aliasas=['av','ava','pfp'])
+    @commands.command(aliases=['av','ava','pfp'])
     async def avatar(self,ctx,member:discord.Member):
         embed = discord.Embed(description=f"{member}'s avatar.",color=0x2f3136)
         embed.set_image(url=member.avatar_url)
