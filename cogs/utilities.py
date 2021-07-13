@@ -31,7 +31,7 @@ class utilities(commands.Cog):
             embed.set_footer(text="Prefix: h.\nDeveloper: cia#0402\nGithub: https://github.com/tokenlogger/hentaihaven.dev-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
-        elif option == "mod":
+        elif option == "mod" or "moderation":
             embed = discord.Embed(title="Moderation Commands",color=0x2f3136)
             embed.add_field(name="`h.kick`",value="Kicks a user.\n**Usage:** `h.kick {user} {reason}`",inline=False)
             embed.add_field(name="`h.ban`",value="Bans a user.\n**Usage:** `h.ban {user} {reason}`",inline=False)
@@ -41,7 +41,7 @@ class utilities(commands.Cog):
             embed.set_footer(text="Prefix: h.\nDeveloper: cia#0402\nGithub: https://github.com/tokenlogger/hentaihaven.dev-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
-        elif option == "util":
+        elif option == "util" or "utilities":
             embed = discord.Embed(title="Utilites",color=0x2f3136)
             embed.add_field(name="`h.avatar`",value="Shows a users avatar.\n**Usage:** `h.avatar {user}`",inline=False)
             embed.add_field(name="`h.slowmode`",value="Adds slowmode to the channel.\n**Usage:** `h.slowmode {seconds}`",inline=False)
