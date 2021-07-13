@@ -10,6 +10,8 @@ class apicommands(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded API Commands.')
+        time.sleep(3)
+        os.system('cls||clear')
 
     @commands.command()
     async def hentai(self,ctx):
