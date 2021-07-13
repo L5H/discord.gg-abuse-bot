@@ -8,7 +8,7 @@ class moderation(commands.Cog):
         self.client = client
     
     @commands.Cog.listener()
-    async def on_ready(self):
+    async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Moderation.')
 
     @commands.command()
@@ -180,108 +180,6 @@ class moderation(commands.Cog):
         if isinstance(error, commands.CommandInvokeError):
             embed = discord.Embed(description="This member is not muted.",color=0x2f3136)
             embed.set_footer(text=f"Unmute attempted by {ctx.author}")
-            await ctx.send(embed=embed)
-            return
-    
-    @commands.command()
-    @commands.has_permissions(manage_messages=True)
-    async def slowmode(self,ctx,seconds):
-        await ctx.channel.edit(slowmode_delay=seconds)
-        embed = discord.Embed(description=f"Set channels slowmode to {seconds} seconds.",color=0x2f3136)
-        await ctx.send(embed=embed)
-    @slowmode.error
-    async def slowmode_error(self,ctx,error):
-        if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not specify how many seconds you wanted to set the slowmode to this channel.\n\n`h.slowmode {seconds}`",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-        if isinstance(error, commands.MissingPermissions):
-            embed = discord.Embed(description="You don't have permission to do this.",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-
-    @commands.command(aliases=['nick','nn'])
-    @commands.has_permissions(manage_nicknames=True)
-    async def nickname(self,ctx,member:discord.Member,*,arg):
-        embed = discord.Embed(description=f"Changed {member.mention}'s nickname to {arg}",color=0x2f3136)
-        embed.set_footer(text=f"Nickname changed by {ctx.author}")
-        await ctx.send(embed=embed)
-        await member.edit(nick=arg)
-    @nickname.error
-    async def nickname_error(self,ctx,error):
-        if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not specify the correct arguments.\n\n`h.nickname {user} {nickname}`",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-        if isinstance(error,commands.MissingPermissions):
-            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-
-    @commands.command(aliases=['clear'])
-    @commands.has_permissions(manage_messages=True)
-    async def purge(self,ctx,nig: int):
-        await ctx.channel.purge(limit=nig+1)
-        embed = discord.Embed(description=f"{nig} message(s) were deleted",color=0x2f3136)
-        embed.set_footer(text=f"Purge used by {ctx.author}")
-        await ctx.send(embed=embed)
-    @purge.error
-    async def purge_error(self,ctx, error):
-        if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not specify an amount of messages you wanted to delete.\n\n`h.purge {amount}`",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-        if isinstance(error, commands.MissingPermissions):
-            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-
-    @commands.command(aliases=['chanlock'])
-    @commands.has_permissions(manage_channels=True)
-    async def channellock(self,ctx,arg):
-        if arg == 'true':
-            overwrite = ctx.channel.overwrites_for(ctx.guild.default_role)
-            overwrite.send_messages = False
-            await ctx.channel.set_permissions(ctx.guild.default_role, overwrite=overwrite)
-            embed = discord.Embed(description="Channel successfully locked.",color=0x2f3136)
-            await ctx.send(embed=embed)
-        elif arg == 'false':
-            overwrite = ctx.channel.overwrites_for(ctx.guild.default_role)
-            overwrite.send_messages = True
-            await ctx.channel.set_permissions(ctx.guild.default_role, overwrite=overwrite)
-            embed = discord.Embed(description="Channel successfully unlocked.",color=0x2f3136)
-            await ctx.send(embed=embed)
-        elif arg == None:
-            print("arg None test") #this doesnt debug??????????????
-        else:
-            embed = discord.Embed(description="Argument can only be 'true' or 'false'.",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-    @channellock.error #'function' object has no attribute 'error' ?????????????? (update: i was stupid and forgot to add () to the end of commands.command on channelock command lol)
-    async def channellock_error(self,ctx, error):
-        if isinstance(error, commands.MissingPermissions):
-            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-        if isinstance(error, commands.MissingRequiredArgument): # elif arg == None: doesnt want to work so this is the error handler for now
-            embed = discord.Embed(description="Argument can only be `true` or `false`.",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-
-    @commands.command(aliases=['chpr', 'changestatus'])
-    @commands.has_permissions(manage_messages=True)
-    async def changepresence(self,ctx,*,arg):
-        await self.client.change_presence(activity=discord.Game(name=arg))
-        embed = discord.Embed(description="Changed status to "+arg,color=0x2f3136)
-        await ctx.send(embed=embed)
-    @changepresence.error
-    async def changepresence_error(self,ctx, error):
-        if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not include a status to set.\n\n`h.changepresence {name}`",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-        if isinstance(error, commands.MissingPermissions):
-            embed = discord.Embed(description="You don't have the permission to do this.",color=0x2f3136)
             await ctx.send(embed=embed)
             return
 
