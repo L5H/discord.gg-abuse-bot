@@ -12,11 +12,12 @@ class utilities(commands.Cog):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Utilites.')
 
     @commands.command()
-    async def help(self,ctx,option:str=None):
+    async def help(self,ctx,*,option:str=None):
         if not option:
             embed = discord.Embed(color=0x2f3136)
             embed.add_field(name="User Commands",value="Shows commands all users can use.\n**Usage:** `h.help user`",inline=False)
             embed.add_field(name="Moderation Commands",value="Show commands only moderators/admins can use.\n**Usage:** `h.help mod`",inline=False)
+            embed.add_field(name="Voice Commands",value="Shows voice channel commands. __**Currently in development**__\n**Usage:** `h.help voice`",inline=False)
             embed.add_field(name="Utilities",value="Shows utilities.\n**Usage:** `h.help util`",inline=False)
             embed.set_footer(text="Prefix: h.\nDeveloper: cia#0402\nGithub: https://github.com/tokenlogger/hentaihaven.dev-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
@@ -38,6 +39,13 @@ class utilities(commands.Cog):
             embed.add_field(name="`h.unban`",value="Unbans a user.\n**Usage:** `h.unban {user+tag}`",inline=False)
             embed.add_field(name="`h.mute`",value="Mutes a user.\n**Usage:** `h.mute {user} {reason}`",inline=False)
             embed.add_field(name="`h.unmute`",value="Unmutes a user.\n**Usage:** `h.unmute {user}`",inline=False)
+            embed.set_footer(text="Prefix: h.\nDeveloper: cia#0402\nGithub: https://github.com/tokenlogger/hentaihaven.dev-bot/")
+            embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
+            await ctx.send(embed=embed)
+        elif option == "voice":
+            embed = discord.Embed(title="Voice Commands",color=0x2f3136)
+            embed.add_field(name="`h.join`",value="Joins the users voice channel.",inline=False)
+            embed.add_field(name="`h.leave`",value="Leaves the users voice channel.",inline=False)
             embed.set_footer(text="Prefix: h.\nDeveloper: cia#0402\nGithub: https://github.com/tokenlogger/hentaihaven.dev-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
