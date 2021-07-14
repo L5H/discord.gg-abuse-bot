@@ -1,12 +1,12 @@
 import discord, os, time
 from discord.ext import commands
-from cogs import moderation, events, apicommands, ownercommands, usercommands, errorhandlers, utilities
+from cogs import moderation, events, apicommands, ownercommands, usercommands, errorhandlers, utilities, voice
 
 os.system("title hentaihaven.dev bot")
 intents = discord.Intents.default()
 intents.members = True
 client = commands.Bot(command_prefix=["h.","H."], intents=intents, case_insensitive=True)
-cogs = [errorhandlers, events, moderation, utilities, ownercommands, usercommands, apicommands]
+cogs = [errorhandlers, events, moderation, utilities, voice, ownercommands, usercommands, apicommands]
 client.remove_command('help')
 
 a = 0
