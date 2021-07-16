@@ -28,7 +28,7 @@ class events(commands.Cog):
                     await message.channel.send(embed=discord.Embed(description=f"{message.author.mention} no self promoting lol",color=0x2f3136))
                 else:
                     pass
-            except discord.errors.NotFound: # for some reason this gives out errors?
+            except discord.errors.NotFound: # for some reason this gives out errors? lol
                 pass
         
     @commands.Cog.listener()
