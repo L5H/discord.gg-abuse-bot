@@ -3,12 +3,14 @@ from discord.ext import commands
 from colorama import Fore, Style, init
 init()
 
+links = ['discord.gg','.gg','gg/','discord.com/invite']
+
 class events(commands.Cog):
     def __init__(self,client):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self):
+    async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Events.')
 
     @commands.Cog.listener()
@@ -17,14 +19,13 @@ class events(commands.Cog):
             pass
         else:
             print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] {message.author}: {message.content}')
-        links = ['discord.gg','.gg','gg/']
         for i in links:
             try:
                 if message.author.id == 854036403158908939: # bots uid
                     pass
                 elif i in message.content.lower():
                     await message.delete()
-                    await message.channel.send(embed=discord.Embed(description="no self promoting lol",color=0x2f3136))
+                    await message.channel.send(embed=discord.Embed(description=f"{message.author.mention} no self promoting lol",color=0x2f3136))
                 else:
                     pass
             except discord.errors.NotFound: # for some reason this gives out errors?
@@ -88,14 +89,13 @@ class events(commands.Cog):
             embed.set_footer(text=f"Edited in: #{messagebefore.channel.name}")
             channel = self.client.get_channel(856212153147981844)
             await channel.send(embed=embed)
-        links = ['discord.gg','.gg','gg/']
         for i in links:
             try:
                 if messageafter.author.id == 854036403158908939: # bots uid
                     pass
                 elif i in messageafter.content.lower():
                     await messageafter.delete()
-                    await messageafter.channel.send(embed=discord.Embed(description="no self promoting lol",color=0x2f3136))
+                    await messageafter.channel.send(embed=discord.Embed(description=f"{messagebefore.author.mention} no self promoting lol",color=0x2f3136))
                 else:
                     pass
             except discord.errors.NotFound: # for some reason this gives out errors?
