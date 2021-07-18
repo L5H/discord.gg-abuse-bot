@@ -40,6 +40,8 @@ class events(commands.Cog):
         embed.set_author(name=member, icon_url=member.avatar_url)
         channel = self.client.get_channel(854636583064305698)
         await channel.send(embed=embed)
+        role = discord.utils.get(member.guild.roles, name="Casual")
+        await member.edit(roles=[role])
 
     @commands.Cog.listener()
     async def on_member_remove(self,member):
