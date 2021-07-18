@@ -23,12 +23,14 @@ class events(commands.Cog):
             try:
                 if message.author.id == 854036403158908939: # bots uid
                     pass
+                elif message.content.lower() == "discord.gg/git" or ".gg/git":
+                    pass
                 elif i in message.content.lower():
                     await message.delete()
                     await message.channel.send(embed=discord.Embed(description=f"{message.author.mention} no self promoting lol",color=0x2f3136))
                 else:
                     pass
-            except discord.errors.NotFound: # for some reason this gives out errors? lol
+            except discord.errors.NotFound: # for some reason this gives out errors?
                 pass
         
     @commands.Cog.listener()
@@ -92,6 +94,8 @@ class events(commands.Cog):
         for i in links:
             try:
                 if messageafter.author.id == 854036403158908939: # bots uid
+                    pass
+                elif messageafter.content.lower() == "discord.gg/git" or ".gg/git":
                     pass
                 elif i in messageafter.content.lower():
                     await messageafter.delete()
