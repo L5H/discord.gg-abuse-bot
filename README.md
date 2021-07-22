@@ -1,5 +1,5 @@
 # hentaihaven.dev-bot
-bot in my server discord.gg/cloudflare
+bot in my server discord.gg/git
 
 # Total lines:
 `705`
