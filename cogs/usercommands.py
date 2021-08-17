@@ -8,7 +8,7 @@ class usercommands(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self):
+    async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded User Commands.')
 
     @commands.command()
@@ -25,7 +25,7 @@ class usercommands(commands.Cog):
     @stealcookie.error
     async def stealcookie_error(self,ctx,error):
         if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a user.\n\n`h.stealcookie {user}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not mention a user.\n\n`g.stealcookie {user}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
 
@@ -43,7 +43,7 @@ class usercommands(commands.Cog):
     @stealtoken.error
     async def stealtoken_error(self,ctx,error):
         if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a user.\n\n`h.stealtoken {user}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not mention a user.\n\n`g.stealtoken {user}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
 
@@ -52,20 +52,6 @@ class usercommands(commands.Cog):
         embed = discord.Embed(description="plz send ur code like this it looks autistic without it",color=0x2f3136)
         embed.set_image(url="https://cdn.hentaihaven.dev/onionsiteishot/fbisfatcock/skidnigger/Discord_x50mpifBtW.png")
         await ctx.send(embed=embed)
-
-    @commands.command(aliases=['av','ava','pfp'])
-    async def avatar(self,ctx,member:discord.Member):
-        embed = discord.Embed(description=f"{member}'s avatar.",color=0x2f3136)
-        embed.set_image(url=member.avatar_url)
-        await ctx.send(embed=embed)
-    @avatar.error
-    async def avatar_error(self,ctx,error):
-        if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a user.\n\n`h.avatar {user}`",color=0x2f3136)
-            await ctx.send(embed=embed)
-            return
-
-    # more commands soon (i hope)
 
 def setup(client):
     client.add_cog(usercommands(client))

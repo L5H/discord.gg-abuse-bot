@@ -27,7 +27,7 @@ class moderation(commands.Cog):
     @kick.error
     async def kick_error(self,ctx,error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You didn't mention a user to kick.\n\n`h.kick {user} {reason}`",color=0x2f3136)
+            embed = discord.Embed(description="You didn't mention a user to kick.\n\n`g.kick {user} {reason}`",color=0x2f3136)
             embed.set_footer(text=f"Kick attempted by {ctx.author}")
             await ctx.send(embed=embed)
             return
@@ -54,7 +54,7 @@ class moderation(commands.Cog):
             embed = discord.Embed(description="You can't ban yourself dumbass.",color=0x2f3136)
             await ctx.send(embed=embed)
             return
-        embed = discord.Embed(title=f"Banned {member}", description=f"Reason: {reason}",color=0x2f3136)
+        embed = discord.Embed(title=f"Banned {member}", description=f"Reason: `{reason}`",color=0x2f3136)
         embed.set_footer(text=f"Banned by {ctx.author}")
         await ctx.send(embed=embed)
         embed = discord.Embed(description=f"You were banned from discord.gg/cloudflare for: `{reason}`",color=0x2f3136)
@@ -63,7 +63,7 @@ class moderation(commands.Cog):
     @ban.error
     async def ban_error(self,ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You didn't mention a user to ban.\n\n`h.ban {user} {reason}`",color=0x2f3136)
+            embed = discord.Embed(description="You didn't mention a user to ban.\n\n`g.ban {user} {reason}`",color=0x2f3136)
             embed.set_footer(text=f"Ban attempted by {ctx.author}")
             await ctx.send(embed=embed)
         if isinstance(error, commands.MissingPermissions):
@@ -97,7 +97,7 @@ class moderation(commands.Cog):
     @unban.error
     async def unban_error(self,ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not give the username of the user to unban.\n\n`h.unban {usernamewithtag}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not give the username of the user to unban.\n\n`g.unban {usernamewithtag}`",color=0x2f3136)
             embed.set_footer(text=f"Unban attempted by {ctx.author}")
             await ctx.send(embed=embed)
             return
@@ -132,7 +132,7 @@ class moderation(commands.Cog):
     @mute.error
     async def mute_error(self,ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a member to mute.\n\n`h.mute {member} {reason}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not mention a member to mute.\n\n`g.mute {member} {reason}`",color=0x2f3136)
             embed.set_footer(text=f"Mute attempted by {ctx.author}")
             await ctx.send(embed=embed)
             return
@@ -163,7 +163,7 @@ class moderation(commands.Cog):
     @unmute.error
     async def unmute_error(self,ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a member to unmute.\n\n`h.unmute {user}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not mention a member to unmute.\n\n`g.unmute {user}`",color=0x2f3136)
             embed.set_footer(text=f"Unmute attempted by {ctx.author}")
             await ctx.send(embed=embed)
             return

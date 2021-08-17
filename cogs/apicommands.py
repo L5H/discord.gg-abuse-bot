@@ -1,4 +1,4 @@
-import discord, aiohttp
+import discord, aiohttp, time, os
 from discord.ext import commands
 from colorama import Fore, Style, init
 init()
@@ -8,19 +8,21 @@ class apicommands(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self):
+    async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded API Commands.')
         time.sleep(3)
         os.system('cls||clear')
 
     @commands.command()
     async def hentai(self,ctx):
-        async with aiohttp.ClientSession() as s:
+        embed = discord.Embed(description="Removed due to the images being removed from the CDN. Sorry.",color=0x2f3136)
+        await ctx.send(embed=embed)
+        '''async with aiohttp.ClientSession() as s:
             async with s.get('https://api.hentaihaven.dev/nsfwapi') as r:
                 hentai = await r.json()
                 embed = discord.Embed(description="Hentai provided by https://api.hentaihaven.dev/nsfwapi",color=0x2f3136)
                 embed.set_image(url=hentai['url'])
-                await ctx.send(embed=embed)
+                await ctx.send(embed=embed)'''
 
     @commands.command()
     async def fact(self,ctx):

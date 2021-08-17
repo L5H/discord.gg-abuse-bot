@@ -8,7 +8,7 @@ class errorhandlers(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self):
+    async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Error Handlers.')
 
     @commands.Cog.listener()

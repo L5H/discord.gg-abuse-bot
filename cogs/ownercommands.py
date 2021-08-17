@@ -8,11 +8,11 @@ class ownercommands(commands.Cog):
         self.client = client
 
     @commands.Cog.listener()
-    async def on_ready(self):
+    async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Owner Commands.')
     
     @commands.command()
-    @commands.has_role("Lead Developer (owner)")
+    @commands.has_role("discord.gg/g.")
     async def shutdown(self,ctx):
         embed = discord.Embed(description="Shutting down.",color=0x2f3136)
         await ctx.send(embed=embed)
@@ -26,7 +26,7 @@ class ownercommands(commands.Cog):
             return
 
     @commands.command(aliases=['clearterm'])
-    @commands.has_role("Lead Developer (owner)")
+    @commands.has_role("discord.gg/g.")
     async def clearterminal(self,ctx):
         embed = discord.Embed(description="Cleared the terminal.",color=0x2f3136)
         await ctx.send(embed=embed)
@@ -40,7 +40,7 @@ class ownercommands(commands.Cog):
             return
 
     @commands.command()
-    @commands.has_role("Lead Developer (owner)")
+    @commands.has_role("discord.gg/g.")
     async def request(self,ctx,url,output):
         if output == 'json' or output == 'JSON':
             responce = requests.get(url).json()
@@ -52,8 +52,8 @@ class ownercommands(commands.Cog):
             await ctx.send(embed=embed)
         else:
             embed = discord.Embed(description="Invalid parameters.",color=0x2f3136)
-            embed.add_field(name="JSON",value="```h.requests {url} json```\nThis returns JSON output from the url.",inline=False)
-            embed.add_field(name="TEXT",value="```h.requests {url} text```\nThis returns text output from the url.",inline=False)
+            embed.add_field(name="JSON",value="```g.request {url} json```\nThis returns JSON output from the url.",inline=False)
+            embed.add_field(name="TEXT",value="```g.request {url} text```\nThis returns text output from the url.",inline=False)
             embed.set_footer(text="Keep in mind this is only HTTP GET requests, POST request command has not been made.")
             await ctx.send(embed=embed)
     @request.error
@@ -64,9 +64,9 @@ class ownercommands(commands.Cog):
             return
         
     @commands.command(aliases=['hentaiscraper'])
-    @commands.has_role("Lead Developer (owner)")
+    @commands.has_role("discord.gg/g.")
     async def hscrape(self,ctx):
-        allowed_files = ["jpg", "jpeg", "png", "gif"] # from https://github.com/Codec04/hentai-web-scraper <3
+        allowed_files = ["jpg", "jpeg", "png", "gif"] # from https://g.hub.com/Codec04/hentai-web-scraper <3
         subreddits = ["hentai", "Nekomimi", "Sukebei"]
         for subreddit in subreddits:
             json_data = requests.get(f"https://www.reddit.com/r/{subreddit}/top.json?limit=69&t=month", headers={"User-agent": ""}).json()

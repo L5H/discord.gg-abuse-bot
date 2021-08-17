@@ -1,4 +1,4 @@
-import discord
+import discord, ctypes
 from discord.ext import commands
 from colorama import Fore, Style, init
 init()
@@ -8,22 +8,20 @@ links = ['discord.gg','.gg','gg/','discord.com/invite']
 class events(commands.Cog):
     def __init__(self,client):
         self.client = client
-
+    
     @commands.Cog.listener()
     async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Events.')
 
     @commands.Cog.listener()
     async def on_message(self,message):
-        if message.author.id == 854036403158908939: #bots uid
+        if message.author.id == 854036403158908939:
             pass
         else:
             print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] {message.author}: {message.content}')
         for i in links:
             try:
-                if message.author.id == 854036403158908939: # bots uid
-                    pass
-                elif message.content.lower() == "discord.gg/git" or ".gg/git":
+                if message.author.id == 854036403158908939:
                     pass
                 elif i in message.content.lower():
                     await message.delete()
@@ -40,8 +38,9 @@ class events(commands.Cog):
         embed.set_author(name=member, icon_url=member.avatar_url)
         channel = self.client.get_channel(854636583064305698)
         await channel.send(embed=embed)
-        role = discord.utils.get(member.guild.roles, name="Casual")
+        role = discord.utils.get(member.guild.roles, name="plz verify")
         await member.edit(roles=[role])
+
 
     @commands.Cog.listener()
     async def on_member_remove(self,member):
@@ -75,7 +74,7 @@ class events(commands.Cog):
     @commands.Cog.listener()
     async def on_message_edit(self,messagebefore,messageafter):
         try:
-            if messagebefore.author.id == 854036403158908939: # bots uid
+            if messagebefore.author.id == 854036403158908939:
                 pass
             else:
                 print(f'[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] {messagebefore.author}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content Before Edit: {messagebefore.content}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content After Edit: {messageafter.content}')
@@ -95,9 +94,7 @@ class events(commands.Cog):
             await channel.send(embed=embed)
         for i in links:
             try:
-                if messageafter.author.id == 854036403158908939: # bots uid
-                    pass
-                elif messageafter.content.lower() == "discord.gg/git" or ".gg/git":
+                if messageafter.author.id == 854036403158908939:
                     pass
                 elif i in messageafter.content.lower():
                     await messageafter.delete()
