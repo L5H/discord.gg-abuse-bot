@@ -11,4 +11,4 @@ client.remove_command('help')
 for ok in range(len(cogs)):
     cogs[ok].setup(client)
 
-client.run("ODU0MDM2NDAzMTU4OTA4OTM5.YMeFYQ.-M1cBVZsnbkE79I7pHForGqNYwk")
+client.run("ok")
