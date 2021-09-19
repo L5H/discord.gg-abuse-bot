@@ -3,12 +3,11 @@ from discord.ext import commands
 from colorama import Fore, Style, init
 init()
 
-links = ['discord.gg','.gg','gg/','discord.com/invite']
 
 class events(commands.Cog):
     def __init__(self,client):
         self.client = client
-    
+        
     @commands.Cog.listener()
     async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Events.')
@@ -19,33 +18,20 @@ class events(commands.Cog):
             pass
         else:
             print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] {message.author}: {message.content}')
-        for i in links:
-            try:
-                if message.author.id == 854036403158908939:
-                    pass
-                elif i in message.content.lower():
-                    await message.delete()
-                    await message.channel.send(embed=discord.Embed(description=f"{message.author.mention} no self promoting lol",color=0x2f3136))
-                else:
-                    pass
-            except discord.errors.NotFound: # for some reason this gives out errors?
-                pass
         
     @commands.Cog.listener()
     async def on_member_join(self,member):
         print(f'[{Fore.GREEN}{Style.BRIGHT}JOIN{Fore.RESET}] Username: {member}')
-        embed = discord.Embed(description=f"welcome, hope u enjoy it here",color=0x2f3136)
+        embed = discord.Embed(description=f"welcome to discord.gg/abuse, read <#853568571980120094>",color=0x2f3136)
         embed.set_author(name=member, icon_url=member.avatar_url)
+        embed.set_footer(text="discord.gg/abuse")
         channel = self.client.get_channel(854636583064305698)
         await channel.send(embed=embed)
-        role = discord.utils.get(member.guild.roles, name="plz verify")
-        await member.edit(roles=[role])
-
 
     @commands.Cog.listener()
     async def on_member_remove(self,member):
         print(f'[{Fore.RED}{Style.BRIGHT}LEAVE{Fore.RESET}] Username: {member}')
-        embed=discord.Embed(description=f"bye lol you wont be missed",color=0x2f3136)
+        embed=discord.Embed(description=f"sad to see you go",color=0x2f3136)
         embed.set_author(name=member, icon_url=member.avatar_url)
         embed.set_footer(text=f"UID: {member.mention}")
         channel = self.client.get_channel(856212824182620175)
@@ -61,20 +47,22 @@ class events(commands.Cog):
                 embed = discord.Embed(description=message.content,color=0x2f3136)
                 embed.set_author(name=message.author, icon_url=message.author.avatar_url)
                 embed.set_footer(text=f"Deleted in: #{message.channel.name}")
-                channel = self.client.get_channel(856212153147981844)
+                channel = self.client.get_channel(885187525952540705)
                 await channel.send(embed=embed)
         except discord.errors.HTTPException: # if this is even possible?????
             print(f'[{Fore.RED}{Style.BRIGHT}!{Fore.RESET}] Deleted message is too long.')
             embed = discord.Embed(description="Deleted message is too long.",color=0x2f3136)
             embed.set_author(name=message.author, icon_url=message.author.avatar_url)
             embed.set_footer(text=f"Deleted in: #{message.channel.name}")
-            channel = self.client.get_channel(856212153147981844)
+            channel = self.client.get_channel(885187525952540705)
             await channel.send(embed=embed)
 
     @commands.Cog.listener()
     async def on_message_edit(self,messagebefore,messageafter):
         try:
             if messagebefore.author.id == 854036403158908939:
+                pass
+            elif messagebefore.content.lower == "https://" or "http://":
                 pass
             else:
                 print(f'[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] {messagebefore.author}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content Before Edit: {messagebefore.content}\n[{Fore.YELLOW}{Style.BRIGHT}={Fore.RESET}] Content After Edit: {messageafter.content}')
@@ -83,26 +71,15 @@ class events(commands.Cog):
                 embed.add_field(name="After:", value=messageafter.content, inline=False)
                 embed.set_author(name=messagebefore.author, icon_url=messagebefore.author.avatar_url)
                 embed.set_footer(text=f"Edited in: #{messagebefore.channel.name}")
-                channel = self.client.get_channel(856212153147981844)
+                channel = self.client.get_channel(885187525952540705)
                 await channel.send(embed=embed)
         except discord.errors.HTTPException:
             print(f'[{Fore.RED}{Style.BRIGHT}!{Fore.RESET}] Edited message is too long.')
             embed = discord.Embed(description="Edited message is too long.",color=0x2f3136)
             embed.set_author(name=messagebefore.author, icon_url=messagebefore.author.avatar_url)
             embed.set_footer(text=f"Edited in: #{messagebefore.channel.name}")
-            channel = self.client.get_channel(856212153147981844)
+            channel = self.client.get_channel(885187525952540705)
             await channel.send(embed=embed)
-        for i in links:
-            try:
-                if messageafter.author.id == 854036403158908939:
-                    pass
-                elif i in messageafter.content.lower():
-                    await messageafter.delete()
-                    await messageafter.channel.send(embed=discord.Embed(description=f"{messagebefore.author.mention} no self promoting lol",color=0x2f3136))
-                else:
-                    pass
-            except discord.errors.NotFound: # for some reason this gives out errors?
-                pass
 
 def setup(client):
     client.add_cog(events(client))

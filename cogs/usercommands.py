@@ -25,13 +25,13 @@ class usercommands(commands.Cog):
     @stealcookie.error
     async def stealcookie_error(self,ctx,error):
         if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a user.\n\n`g.stealcookie {user}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not mention a user.\n\n`$stealcookie {user}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
 
     @commands.command()
     async def stealtoken(self,ctx,member:discord.Member):
-        tokens = ['NDc5MzMzMzc5Njc0OTk2NzQ2.DlYF_w.QpvT7z0m4ThKoezf5zbe2fIPWV8','NDc5MzYwMTgzNTYzMTkwMjcz.DlYGmQ.3MlAyGKs5-7_e7CPMflmUe87r_E','NDc5MzYwNDc1OTY1MDMwNDMx.DlYG-w.yXWMKlalIt87Mz673elIFprWbnY','NDc5MzYwNzUyMTA1MjkxNzc3.DlYHWg.hOqxEiLGhnFyqd4Jas-BxP-MLJs','NDc5MzYxMTA3MTA3MTE5MTA1.DlYHoA.t5LtubIhbUWoi0wv4hY5c-Eqg1w','NDc5MzYxNDAyMTQ2OTE0MzA0.DlYH5A.Bm12AOLHbY2hEINnj4nEtGEdsh8','NDc5MzYxNzAwMDQzNDIzNzg1.DlYIPQ.xkjX_ai7tCq4shEVNPQfqTKWreQ']
+        tokens = ['NDc5MzMzMzc5Njc0OTk2NzQ2.DlYF_w.QpvT7z0m4ThKoezf5zbe2fIPWV8','NDc5MzYwMTgzNTYzMTkwMjcz.DlYGmQ.3MlAyGKs5-7_e7CPMflmUe87r_E','NDc5MzYwNDc1OTY1MDMwNDMx.DlYG-w.yXWMKlalIt87Mz673elIFprWbnY','NDc5MzYwNzUyMTA1MjkxNzc3.DlYHW$hOqxEiLGhnFyqd4Jas-BxP-MLJs','NDc5MzYxMTA3MTA3MTE5MTA1.DlYHoA.t5LtubIhbUWoi0wv4hY5c-Eqg1w','NDc5MzYxNDAyMTQ2OTE0MzA0.DlYH5A.Bm12AOLHbY2hEINnj4nEtGEdsh8','NDc5MzYxNzAwMDQzNDIzNzg1.DlYIPQ.xkjX_ai7tCq4shEVNPQfqTKWreQ']
         embed = discord.Embed(description=f"Stealing {member}'s Discord token..",color=0x2f3136)
         await ctx.send(embed=embed)
         await asyncio.sleep(2)
@@ -43,7 +43,7 @@ class usercommands(commands.Cog):
     @stealtoken.error
     async def stealtoken_error(self,ctx,error):
         if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a user.\n\n`g.stealtoken {user}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not mention a user.\n\n`$stealtoken {user}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
 

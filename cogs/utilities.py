@@ -15,57 +15,57 @@ class utilities(commands.Cog):
     async def help(self,ctx,*,option:str=None):
         if not option:
             embed = discord.Embed(color=0x2f3136)
-            embed.add_field(name="User Commands",value="Shows commands all users can use.\n**Usage:** `g.help user`",inline=False)
-            embed.add_field(name="Moderation Commands",value="Show commands only moderators/admins can use.\n**Usage:** `g.help mod`",inline=False)
-            embed.add_field(name="Voice Commands",value="Shows voice channel commands. __**Currently in development.**__\n**Usage:** `g.help voice`",inline=False)
-            embed.add_field(name="Utilities",value="Shows utilities.\n**Usage:** `g.help util`",inline=False)
-            embed.set_footer(text="Prefix: g.\nDeveloper: cia#1337\ng.hub: https://g.hub.com/tokenlogger/hentaihaven.dev-bot/")
+            embed.add_field(name="User Commands",value="Shows commands all users can use.\n**Usage:** `$help user`",inline=False)
+            embed.add_field(name="Moderation Commands",value="Show commands only moderators/admins can use.\n**Usage:** `$help mod`",inline=False)
+            embed.add_field(name="Voice Commands",value="Shows voice channel commands. __**Currently in development.**__\n**Usage:** `$help voice`",inline=False)
+            embed.add_field(name="Utilities",value="Shows utilities.\n**Usage:** `$help util`",inline=False)
+            embed.set_footer(text="Prefix: $\nDeveloper: cia#0002\nGithub: https://github.com/tokenlogger/discord.gg-abuse-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
         elif option == "user":
             embed = discord.Embed(title="User Commands",color=0x2f3136)
-            embed.add_field(name="`g.kat`",value="Sends a picture of a random cat from **https://api.hentaihaven.dev/katapi**",inline=False)
-            embed.add_field(name="`g.fact`",value="Sends a random fact from **https://api.hentaihaven.dev/factapi**",inline=False)
-            embed.add_field(name="`g.hentai`",value="Sends hentai from **https://api.hentaihaven.dev/factapi**",inline=False)
-            embed.add_field(name="`g.stealcookie`",value="Steals a users cookie.\n**Usage:** `g.stealcookie {user}`\n\n",inline=False)
-            embed.add_field(name="`g.stealtoken`",value="Steals a users token.\n**Usage:** `g.stealtoken {user}`",inline=False)
-            embed.set_footer(text="Prefix: g.\nDeveloper: cia#1337\ng.hub: https://g.hub.com/tokenlogger/hentaihaven.dev-bot/")
+            embed.add_field(name="`$kat`",value="Sends a picture of a random cat from **https://api.hentaihaven.dev/katapi**",inline=False)
+            embed.add_field(name="`$fact`",value="Sends a random fact from **https://api.hentaihaven.dev/factapi**",inline=False)
+            embed.add_field(name="`$hentai`",value="Sends hentai from **https://api.hentaihaven.dev/factapi**",inline=False)
+            embed.add_field(name="`$stealcookie`",value="Steals a users cookie.\n**Usage:** `$stealcookie {user}`\n\n",inline=False)
+            embed.add_field(name="`$stealtoken`",value="Steals a users token.\n**Usage:** `$stealtoken {user}`",inline=False)
+            embed.set_footer(text="Prefix: $\nDeveloper: cia#0002\nGithub: https://github.com/tokenlogger/discord.gg-abuse-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
         elif option == "mod":
             embed = discord.Embed(title="Moderation Commands",color=0x2f3136)
-            embed.add_field(name="`g.kick`",value="Kicks a user.\n**Usage:** `g.kick {user} {reason}`",inline=False)
-            embed.add_field(name="`g.ban`",value="Bans a user.\n**Usage:** `g.ban {user} {reason}`",inline=False)
-            embed.add_field(name="`g.unban`",value="Unbans a user.\n**Usage:** `g.unban {user+tag}`",inline=False)
-            embed.add_field(name="`g.mute`",value="Mutes a user.\n**Usage:** `g.mute {user} {reason}`",inline=False)
-            embed.add_field(name="`g.unmute`",value="Unmutes a user.\n**Usage:** `g.unmute {user}`",inline=False)
-            embed.set_footer(text="Prefix: g.\nDeveloper: cia#1337\ng.hub: https://g.hub.com/tokenlogger/hentaihaven.dev-bot/")
+            embed.add_field(name="`$kick`",value="Kicks a user.\n**Usage:** `$kick {user} {reason}`",inline=False)
+            embed.add_field(name="`$ban`",value="Bans a user.\n**Usage:** `$ban {user} {reason}`",inline=False)
+            embed.add_field(name="`$unban`",value="Unbans a user.\n**Usage:** `$unban {user+tag}`",inline=False)
+            embed.add_field(name="`$mute`",value="Mutes a user.\n**Usage:** `$mute {user} {reason}`",inline=False)
+            embed.add_field(name="`$unmute`",value="Unmutes a user.\n**Usage:** `$unmute {user}`",inline=False)
+            embed.set_footer(text="Prefix: $\nDeveloper: cia#0002\nGithub: https://github.com/tokenlogger/discord.gg-abuse-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
         elif option == "voice":
             embed = discord.Embed(title="Voice Commands",color=0x2f3136)
-            embed.add_field(name="`g.join`",value="Joins the users voice channel.",inline=False)
-            embed.add_field(name="`g.leave`",value="Leaves the users voice channel.",inline=False)
-            embed.set_footer(text="Prefix: g.\nDeveloper: cia#1337\ng.hub: https://g.hub.com/tokenlogger/hentaihaven.dev-bot/")
+            embed.add_field(name="`$join`",value="Joins the users voice channel.",inline=False)
+            embed.add_field(name="`$leave`",value="Leaves the users voice channel.",inline=False)
+            embed.set_footer(text="Prefix: $\nDeveloper: cia#0002\nGithub: https://github.com/tokenlogger/discord.gg-abuse-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
         elif option == "util":
             embed = discord.Embed(title="Utilites",color=0x2f3136)
-            embed.add_field(name="`g.avatar`",value="Shows a users avatar.\n**Usage:** `g.avatar {user}`",inline=False)
-            embed.add_field(name="`g.slowmode`",value="Adds slowmode to the channel.\n**Usage:** `g.slowmode {seconds}`",inline=False)
-            embed.add_field(name="`g.nickname`",value="Adds a nickname to a user.\n**Usage:** `g.nickname {user} {nickname}`",inline=False)
-            embed.add_field(name="`g.purge`",value="Deletes an amount of messages in a channel.\n**Usage:** `g.purge {amount}`",inline=False)
-            embed.add_field(name="`g.channellock`",value="Locks the channel.\n**Usage:** `g.channellock {true/false}`",inline=False)
-            embed.add_field(name="`g.changepresence`",value="Changes the bots presence.\n**Usage:** `g.changepresence {presence}`",inline=False)
-            embed.set_footer(text="Prefix: g.\nDeveloper: cia#1337\ng.hub: https://g.hub.com/tokenlogger/hentaihaven.dev-bot/")
+            embed.add_field(name="`$avatar`",value="Shows a users avatar.\n**Usage:** `$avatar {user}`",inline=False)
+            embed.add_field(name="`$slowmode`",value="Adds slowmode to the channel.\n**Usage:** `$slowmode {seconds}`",inline=False)
+            embed.add_field(name="`$nickname`",value="Adds a nickname to a user.\n**Usage:** `$nickname {user} {nickname}`",inline=False)
+            embed.add_field(name="`$purge`",value="Deletes an amount of messages in a channel.\n**Usage:** `$purge {amount}`",inline=False)
+            embed.add_field(name="`$channellock`",value="Locks the channel.\n**Usage:** `$channellock {true/false}`",inline=False)
+            embed.add_field(name="`$changepresence`",value="Changes the bots presence.\n**Usage:** `$changepresence {presence}`",inline=False)
+            embed.set_footer(text="Prefix: $\nDeveloper: cia#0002\nGithub: https://github.com/tokenlogger/discord.gg-abuse-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
         else:
             embed = discord.Embed(color=0x2f3136)
-            embed.add_field(name="User Commands",value="Shows commands all users can use.\n**Usage:** `g.help user`",inline=False)
-            embed.add_field(name="Moderation Commands",value="Show commands only moderators/admins can use.\n**Usage:** `g.help mod`",inline=False)
-            embed.add_field(name="Utilities",value="Shows utilities.\n**Usage:** `g.help util`",inline=False)
-            embed.set_footer(text="Prefix: g.\nDeveloper: cia#1337\ng.hub: https://g.hub.com/tokenlogger/hentaihaven.dev-bot/")
+            embed.add_field(name="User Commands",value="Shows commands all users can use.\n**Usage:** `$help user`",inline=False)
+            embed.add_field(name="Moderation Commands",value="Show commands only moderators/admins can use.\n**Usage:** `$help mod`",inline=False)
+            embed.add_field(name="Utilities",value="Shows utilities.\n**Usage:** `$help util`",inline=False)
+            embed.set_footer(text="Prefix: $\nDeveloper: cia#0002\nGithub: https://github.com/tokenlogger/discord.gg-abuse-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
             await ctx.send(embed=embed)
 
@@ -77,7 +77,7 @@ class utilities(commands.Cog):
     @avatar.error
     async def avatar_error(self,ctx,error):
         if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a user.\n\n`g.avatar {user}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not mention a user.\n\n`$avatar {user}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
 
@@ -90,7 +90,7 @@ class utilities(commands.Cog):
     @slowmode.error
     async def slowmode_error(self,ctx,error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not specify how many seconds you wanted to set the slowmode to this channel.\n\n`g.slowmode {seconds}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not specify how many seconds you wanted to set the slowmode to this channel.\n\n`$slowmode {seconds}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
         if isinstance(error, commands.MissingPermissions):
@@ -108,7 +108,7 @@ class utilities(commands.Cog):
     @nickname.error
     async def nickname_error(self,ctx,error):
         if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not specify the correct arguments.\n\n`g.nickname {user} {nickname}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not specify the correct arguments.\n\n`$nickname {user} {nickname}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
         if isinstance(error,commands.MissingPermissions):
@@ -126,7 +126,7 @@ class utilities(commands.Cog):
     @purge.error
     async def purge_error(self,ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not specify an amount of messages you wanted to delete.\n\n`g.purge {amount}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not specify an amount of messages you wanted to delete.\n\n`$purge {amount}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
         if isinstance(error, commands.MissingPermissions):
@@ -173,7 +173,7 @@ class utilities(commands.Cog):
     @changepresence.error
     async def changepresence_error(self,ctx, error):
         if isinstance(error, commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not include a status to set.\n\n`g.changepresence {name}`",color=0x2f3136)
+            embed = discord.Embed(description="You did not include a status to set.\n\n`$changepresence {name}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
         if isinstance(error, commands.MissingPermissions):
