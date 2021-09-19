@@ -1,4 +1,4 @@
-# hentaihaven.dev-bot
+# discord.gg/abuse-bot
 bot in my server discord.gg/abuse
 
 # Total lines:
