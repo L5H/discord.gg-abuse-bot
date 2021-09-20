@@ -29,7 +29,7 @@ class apicommands(commands.Cog):
         async with aiohttp.ClientSession() as s:
             async with s.get("https://api.hentaihaven.dev/factapi") as r:
                 fact = await r.json()
-                embed = discord.Embed(title="Fact provided by https://api.hentaihaven.dev/factapi",description=fact['fact'],color=0x2f3136)
+                embed = discord.Embed(title="Fact provided by [api.hentaihaven.dev](https://api.hentaihaven.dev/factapi)",description=fact['fact'],color=0x2f3136)
                 await ctx.send(embed=embed)
 
     @commands.command(aliases=['cat'])
@@ -37,7 +37,7 @@ class apicommands(commands.Cog):
         async with aiohttp.ClientSession() as s:
             async with s.get("https://api.hentaihaven.dev/katapi") as r:
                 kat = await r.json()
-                embed = discord.Embed(description="Kat PFP provided by https://api.hentaihaven.dev/katapi",color=0x2f3136)
+                embed = discord.Embed(description="Kat PFP provided by [api.hentaihaven.dev](https://api.hentaihaven.dev/katapi)",color=0x2f3136)
                 embed.set_image(url=kat['url'])
                 embed.set_footer(text="If the image is low res, copy the image link in the embed and get it from there.\nDiscord lowers res of images in embeds.")
                 await ctx.send(embed=embed)

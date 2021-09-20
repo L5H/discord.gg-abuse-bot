@@ -25,7 +25,7 @@ class events(commands.Cog):
         embed = discord.Embed(description=f"welcome to discord.gg/abuse, read <#853568571980120094>",color=0x2f3136)
         embed.set_author(name=member, icon_url=member.avatar_url)
         embed.set_footer(text="discord.gg/abuse")
-        channel = self.client.get_channel(854636583064305698)
+        channel = self.client.get_channel(888928678371807282)
         await channel.send(embed=embed)
 
     @commands.Cog.listener()
@@ -34,7 +34,7 @@ class events(commands.Cog):
         embed=discord.Embed(description=f"sad to see you go",color=0x2f3136)
         embed.set_author(name=member, icon_url=member.avatar_url)
         embed.set_footer(text=f"UID: {member.mention}")
-        channel = self.client.get_channel(856212824182620175)
+        channel = self.client.get_channel(888928678371807282)
         await channel.send(embed=embed)
 
     @commands.Cog.listener()
