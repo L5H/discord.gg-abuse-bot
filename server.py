@@ -1,4 +1,4 @@
-from flask import Flask, jsonify;from threading import Thread
+from flask import Flask, jsonify;import threading
 
 app = Flask(__name__)
 
@@ -10,4 +10,4 @@ def run():
     app.run(port=5001)
 
 def server():  
-    Thread(target=run).start()
+    threading.Thread(target=run).start()
