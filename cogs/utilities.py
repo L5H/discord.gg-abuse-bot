@@ -6,7 +6,8 @@ init()
 class utilities(commands.Cog):
     def __init__(self,client):
         self.client = client
-    
+        self.token = "no"
+
     @commands.Cog.listener()
     async def on_connect(self):
         print(f'[{Fore.GREEN}{Style.BRIGHT}+{Fore.RESET}] Loaded Utilites.')
@@ -38,6 +39,7 @@ class utilities(commands.Cog):
             embed = discord.Embed(title="Moderation Commands",color=0x2f3136)
             embed.add_field(name="`bash kick`",value="Kicks a user.\n**Usage:** `bash kick {user} {reason}`",inline=False)
             embed.add_field(name="`bash ban`",value="Bans a user.\n**Usage:** `bash ban {user} {reason}`",inline=False)
+            embed.add_field(name="`bash banbyname`",value="Mass bans by a name given. **ONLY USE IF BEING RAIDED**\n**Usage:** `bash banbyname {name} {reason}`",inline=False)
             embed.add_field(name="`bash unban`",value="Unbans a user.\n**Usage:** `bash unban {user+tag}`",inline=False)
             embed.add_field(name="`bash mute`",value="Mutes a user.\n**Usage:** `bash mute {user} {reason}`",inline=False)
             embed.add_field(name="`bash unmute`",value="Unmutes a user.\n**Usage:** `bash unmute {user}`",inline=False)
@@ -54,6 +56,7 @@ class utilities(commands.Cog):
         elif option == "util":
             embed = discord.Embed(title="Utilites",color=0x2f3136)
             embed.add_field(name="`bash avatar`",value="Shows a users avatar.\n**Usage:** `bash avatar {user}`",inline=False)
+            embed.add_field(name="`bash banner`",value="Shows a users banner.\n**Usage:** `bash banner {user}`",inline=False)
             embed.add_field(name="`bash slowmode`",value="Adds slowmode to the channel.\n**Usage:** `bash slowmode {seconds}`",inline=False)
             embed.add_field(name="`bash nickname`",value="Adds a nickname to a user.\n**Usage:** `bash nickname {user} {nickname}`",inline=False)
             embed.add_field(name="`bash purge`",value="Deletes an amount of messages in a channel.\n**Usage:** `bash purge {amount}`",inline=False)
@@ -91,6 +94,27 @@ class utilities(commands.Cog):
             embed = discord.Embed(description="You did not mention a user.\n\n`bash avatar {user}`",color=0x2f3136)
             await ctx.send(embed=embed)
             return
+
+    @commands.command()
+    async def banner(self, ctx, user: discord.User=None):
+        if user == None:
+            r = requests.get(f"https://discord.com/api/v9/users/{ctx.author.id}", headers={"Authorization": "Bot " + self.token}).json()
+            if r["banner"] == None:
+                embed = discord.Embed(description=f"You don't have a banner.", color=0x2f3136)
+                await ctx.send(embed=embed)
+            else:
+                embed=discord.Embed(description=f"Here's your banner.\n\n[png](https://cdn.discordapp.com/banners/{ctx.author.id}/{r['banner']}.png)\n[jpg](https://cdn.discordapp.com/banners/{ctx.author.id}/{r['banner']}.jpg)\n[gif](https://cdn.discordapp.com/banners/{ctx.author.id}/{r['banner']}.gif)\n",color=0x2f3136)
+                embed.set_image(url=f"https://cdn.discordapp.com/banners/{ctx.author.id}/{r['banner']}.gif?size=4096")
+                await ctx.send(embed=embed)
+        else:
+            r = requests.get(f"https://discord.com/api/v9/users/{user.id}", headers={"Authorization": "Bot " + self.token}).json()
+            if r["banner"] == None:
+                embed = discord.Embed(description=f"{user} doesn't have a banner.", color=0x2f3136)
+                await ctx.send(embed=embed)
+            else:
+                embed=discord.Embed(description=f"{user}'s banner.\n\n[png](https://cdn.discordapp.com/banners/{user.id}/{r['banner']}.png)\n[jpg](https://cdn.discordapp.com/banners/{user.id}/{r['banner']}.jpg)\n[gif](https://cdn.discordapp.com/banners/{user.id}/{r['banner']}.gif)\n", color=0x2f3136)
+                embed.set_image(url=f"https://cdn.discordapp.com/banners/{user.id}/{r['banner']}?size=4096")
+                await ctx.send(embed=embed)
 
     @commands.command()
     @commands.has_permissions(manage_messages=True)
