@@ -68,6 +68,7 @@ class utilities(commands.Cog):
             embed.add_field(name="`bash removecolor`",value="Removes a selected color role from <#888956219253985280>.\n**Usage:** `bash removecolor {id}`",inline=False)
             embed.set_footer(text="Prefix: bash \nDeveloper: cia#0002\nGithub: https://github.com/tokenlogger/discord.gg-abuse-bot/")
             embed.set_thumbnail(url=requests.get("https://api.hentaihaven.dev/katapi").json()['url'])
+            await ctx.send(embed=embed)
         else:
             embed = discord.Embed(color=0x2f3136)
             embed.add_field(name="User Commands",value="Shows commands all users can use.\n**Usage:** `bash help user`",inline=False)
