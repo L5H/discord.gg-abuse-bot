@@ -84,16 +84,15 @@ class utilities(commands.Cog):
             await ctx.send(embed=embed)
 
     @commands.command(aliases=['av','ava','pfp'])
-    async def avatar(self,ctx,member:discord.Member):
-        embed = discord.Embed(description=f"{member}'s avatar.",color=0x2f3136)
-        embed.set_image(url=member.avatar_url)
-        await ctx.send(embed=embed)
-    @avatar.error
-    async def avatar_error(self,ctx,error):
-        if isinstance(error,commands.MissingRequiredArgument):
-            embed = discord.Embed(description="You did not mention a user.\n\n`bash avatar {user}`",color=0x2f3136)
+    async def avatar(self,ctx,user:discord.User=None):
+        if user == None:
+            embed = discord.Embed(description=f"{ctx.author}'s avatar.",color=0x2f3136)
+            embed.set_image(url=ctx.message.author.avatar_url)
             await ctx.send(embed=embed)
-            return
+        else:
+            embed = discord.Embed(description=f"{user}'s avatar.",color=0x2f3136)
+            embed.set_image(url=user.avatar_url)
+            await ctx.send(embed=embed)
 
     @commands.command()
     async def banner(self, ctx, user: discord.User=None):
